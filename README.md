@@ -27,7 +27,7 @@ A ready-to-use folder structure with Claude Code configuration files (skills, ag
 ### 1. Clone or Copy
 
 ```bash
-# Option A: Clone from GitHub
+# Option A: Fork on GitHub, then clone your fork
 git clone https://github.com/YOUR_USERNAME/claude-code-research-starter.git my-new-project
 cd my-new-project
 rm -rf .git
@@ -43,7 +43,25 @@ cp -r claude-code-research-starter/explorations/ /path/to/your/project/
 cp claude-code-research-starter/.gitignore /path/to/your/project/
 ```
 
-### 2. Customize CLAUDE.md
+### 2. Launch Claude Code and Paste the Starter Prompt
+
+Open a terminal in your project directory and run `claude`. Then paste the following, filling in your project details:
+
+> I am starting to work on **[PROJECT NAME]** in this repo. **[Describe your project in 2–3 sentences — what you're building, what data you use, what methods or tools (Julia, R, Stata, LaTeX) are involved.]**
+>
+> I want our collaboration to be structured, precise, and rigorous. When creating visuals, everything must be polished and publication-ready.
+>
+> I've set up the Claude Code Research Starter Kit (from `luischanci/claude-code-research-starter`). The configuration files are already in this repo. Please read them, understand the workflow, and then **update all configuration files to fit my project** — fill in placeholders in `CLAUDE.md`, adjust rules if needed, and propose any customizations specific to my use case.
+>
+> After that, use the plan-first workflow for all non-trivial tasks. Once I approve a plan, switch to contractor mode — coordinate everything autonomously and only come back to me when there's ambiguity or a decision to make.
+>
+> Enter plan mode and start by adapting the workflow configuration for this project.
+
+**What this does:** Claude reads all the configuration files (`CLAUDE.md`, rules, agents, skills), fills in your project name, institution, and preferences, then enters contractor mode — planning, implementing, reviewing, and verifying autonomously. You approve the plan and Claude handles the rest.
+
+**Prefer to configure manually?** Skip to step 3 below for detailed instructions on each file to customize.
+
+### 3. Customize CLAUDE.md (Manual Alternative)
 
 Open `CLAUDE.md` and fill in the placeholders marked with `[PLACEHOLDER]`:
 
@@ -53,7 +71,7 @@ Open `CLAUDE.md` and fill in the placeholders marked with `[PLACEHOLDER]`:
 - **Model specifications** (your econometric models)
 - **Key output files** (your specific outputs)
 
-### 3. Customize Domain-Specific Files
+### 4. Customize Domain-Specific Files
 
 1. **`.claude/agents/domain-reviewer.md`** -- Replace the review lenses with your field's concerns (e.g., identification strategy for causal inference, instrument validity for IV, etc.)
 
@@ -61,11 +79,11 @@ Open `CLAUDE.md` and fill in the placeholders marked with `[PLACEHOLDER]`:
 
 3. **`.claude/rules/r-code-conventions.md`** and **`.claude/rules/julia-code-conventions.md`** -- Adjust the visual palette, common pitfalls, and domain-specific conventions for your project.
 
-### 4. Verify Hooks Work
+### 5. Verify Hooks Work
 
 The hooks are configured for **Windows (PowerShell)**. If you're on macOS/Linux, replace `.ps1` files with `.sh` equivalents and update `.claude/settings.json` accordingly. See the `hooks/` section below.
 
-### 5. Start Working
+### 6. Start Working
 
 ```bash
 claude  # Launch Claude Code in your project directory
